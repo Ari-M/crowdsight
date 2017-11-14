@@ -1,0 +1,170 @@
+body {
+    background-color: #101D42;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+/* Materialize Web Icons */
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.navbar {
+    background-color: #0b132b;
+    font-family: 'Days One', sans-serif;
+}
+
+li:hover {
+    background-color: #76e7cd;
+}
+
+.user {
+    float: left;
+    color: white;
+}
+
+.card {
+    background-color: #0b132b;
+    /* width: 250px; */
+    position: -webkit-sticky;
+    /* position: sticky;
+    top: 0; */
+}
+
+.aboutCard {
+    width: 250px;
+}
+
+.inline {
+    display: inline;
+}
+
+.fullWidth {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.noclear {
+    clear: none;
+}
+
+.profileLinks {
+    color: white;
+}
+
+.text-analysis {
+    float: right;
+}
+
+.App {
+    text-align: center;
+}
+
+.SignupBox {
+    background: lightgreen;
+    padding: 0.5em;
+}
+
+.LoginBox {
+    background: lightblue;
+    padding: 0.5em;
+}
+
+.userNav {
+    border: 3px solid green;
+    height: 200px;
+}
+
+.carousel {
+    min-height: 600px;
+}
+
+.carousel .carousel-item {
+    width: 600px !important;
+}
+
+.aboutBox {
+    height: 400px;
+    margin-top: 50px;
+}
+
+.devs {
+    display: inline-block;
+    margin: 10px;
+    max-height: 300px;
+    min-height: 300px;
+    max-width: 400px;
+    height: 550px;
+    background-color: #0b132b;
+    color: white;
+}
+
+.devNames {
+    color: #76e7cd;
+}
+
+.inputField {
+    max-height: 200px;
+}
+
+.loginField {
+    max-width: 500px;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.row {
+    margin-bottom: 0
+}
+
+.button {
+    margin-top: 20px;
+}
+
+.halfWidth {
+    width: 50%
+}
+
+.FileUpload {
+    margin-top: 25px;
+    display: inline-block;
+}
+
+.submitButton {
+    background-color: #76e7cd;
+}
+
+@media only screen and (min-width: 768px) {
+    .sticky {
+        position: fixed;
+        top: 65px;
+        width: 30%;
+    }
+    .demo {
+        margin: 50px 0px;
+    }
+    .slideImg {
+        height: 800px;
+    }
+}
