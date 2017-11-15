@@ -9,7 +9,7 @@ var twilio = require('twilio');
 router.get('/test', function(req, res, next) {
 	var client = new twilio(accountSid, authToken);
 	client.messages.create({
-	    to: '+12064688087',
+	    to: '+1 206-468-8087',
 	    from: '+12064721649',
 	    body: "What's up?"
   	})

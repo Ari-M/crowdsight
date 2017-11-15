@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Response from './Response';
 import {Row, Input, Button, Col} from 'react-materialize';
 
 class Inventory extends Component {
@@ -173,21 +172,6 @@ class Inventory extends Component {
                     {/* <input className="blue" type='button' onClick={ (e) => this.clickSave(e) } value='Save Entry'/> */}
 
                 </form>
-                <div id='entry-text-container'>
-                	<h5>Text</h5>
-                	<p>{this.state.entry}</p>
-
-                	<div id='response'>
-                		<h5>Document Analysis</h5>
-                			{tonesResults}
-                		
-                	</div>
-                </div>
-                <Row id='response-component'>
-					<Col s={12}>
-                		<Response name={this.state.name} data={this.state.data} analyzed={this.state.analyzed} tentative={this.state.tentative} anger={this.state.anger} joy={this.state.joy} fear={this.state.fear} sadness={this.state.sadness} analytical={this.state.analytical} confident={this.state.confident} />
-					</Col>
-				</Row>
             </div>
         );
     }

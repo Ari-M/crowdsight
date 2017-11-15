@@ -7,6 +7,6 @@ client.messages
   .create({
     to: '+12064688087',
     from: '+15005550006',
-    body: "This is a test to see if this will work but apparently it's not"
+    body: ""
   })
   .then((message) => console.log(message.sid));

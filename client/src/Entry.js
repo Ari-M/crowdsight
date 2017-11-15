@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Response from './Response';
 import {Row, Input, Button} from 'react-materialize';
 
 
@@ -9,9 +8,10 @@ class Entry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			eventName: '',
+			name: '',
 			organizer: '',
-
+			date: '',
+			location: ''
 		}
 	}
 
@@ -27,17 +27,52 @@ class Entry extends Component {
 		})
 	}
 
+	handleName(e) {
+		var text = e.target.value
+		this.setState({
+			name: text
+		})
+    }
+
+    handleOrganizer(e) {
+    	var text = e.target.value
+    	this.setState({
+    		organizer: text
+    	})
+    }
+
+    handleDate(e) {
+    	var date = e.target.value
+    	this.setState({
+    		date: date
+    	})
+    }
+
+    handleLocation(e) {
+    	var text = e.target.value
+    	this.setState({
+    		location: text
+    	})
+    	console.log(this.state)
+    }
+
+
+
 	render(){
 		return(
-			<div className='entry create-event full-width'>
+			<div className='entry-container full-width'>
+			<Button onClick={(e) => this.test(e)}>Test</Button>
 				<h4>Create an Event</h4>
-				<Row>
-					<Input s={9} label="Event Name" onChange={ (e) => this.onSubmit(e)} />
-					<Input s={9} label="Event Organizer Name(s)" onChange={ (e) => this.onSubmit(e)} />
-				</Row>
-				<Row>
-					<Input s={9} label='Event Date' name='on' type='date' onChange={function(e, value) {}} />
-				</Row>
+				<p className='container'>Creating an event is easy, simply fill out the following forms and click save, you can edit the contact/SMS aspect of this event later</p>
+				<form id='create-event'>
+					<Row>
+						<Input s={9} label="Event Name" onChange={ (e) => this.handleName(e)} />
+						<Input s={9} label="Event Organizer" onChange={ (e) => this.handleOrganizer(e)} />
+						<Input s={9} label='Event Date' name='on' type='date' onChange={ (e) => this.handleDate(e)} />
+						<Input s={9} label="Event Location" onChange={ (e) => this.handleLocation(e)} />
+						<Button className="left button" onClick={ (e) => this.onClick(e) }>Create Event</Button>
+					</Row>
+				</form>
 			</div>
 		)
 	}
