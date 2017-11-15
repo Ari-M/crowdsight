@@ -9,6 +9,8 @@ class Entry extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			eventName: '',
+			organizer: '',
 
 		}
 	}
@@ -27,9 +29,15 @@ class Entry extends Component {
 
 	render(){
 		return(
-			<div className='entry'>
-				<Button className="left button" onClick={ (e) => this.test(e) }>Test</Button>
-				
+			<div className='entry create-event full-width'>
+				<h4>Create an Event</h4>
+				<Row>
+					<Input s={9} label="Event Name" onChange={ (e) => this.onSubmit(e)} />
+					<Input s={9} label="Event Organizer Name(s)" onChange={ (e) => this.onSubmit(e)} />
+				</Row>
+				<Row>
+					<Input s={9} label='Event Date' name='on' type='date' onChange={function(e, value) {}} />
+				</Row>
 			</div>
 		)
 	}
