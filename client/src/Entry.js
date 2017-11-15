@@ -29,6 +29,7 @@ class Entry extends Component {
 		return(
 			<div className='entry'>
 				<Button className="left button" onClick={ (e) => this.test(e) }>Test</Button>
+				
 			</div>
 		)
 	}
