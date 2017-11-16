@@ -1,52 +1,59 @@
 import React, {Component} from 'react';
 import Inventory from './Inventory';
 import axios from 'axios';
-import {Button, Row } from "react-materialize";
+import { Button, Card, Row, Col } from 'react-materialize';
 
 class History extends Component {
     constructor(props){
         super(props)
         this.state = {
-            wyms: [],
-            toView: ''
+            user: this.props.user.id,
+            groups: []
         }
         this.componentDidMount = this.componentDidMount.bind(this)
     }
  
     componentDidMount(){
-        console.log(this.props.user.id)
-        console.log(this.state)
-        axios.post('/watson/list', {
-            user: this.props.user.id
-        }).then(result => {
-           this.setState({wyms: result.data})
-            console.log(this.state.wyms)
+        axios.get('/groups', {
+            params: {
+                user: this.state.user
+            }
+        })
+        .then(response => {
+            this.setState({
+                groups: response.data
+            })
+            console.log(this.state.groups)
         })
     }
     //Get Individual wym props
     onClick(e){
-        axios.post('/watson/wym', {
-            user: this.props.user.id,
-            id: e.target.value
-        }).then(result => {
-            this.setState({toView: result.data[0].content})
-            console.log(this.state.toView)
-            // console.log(result.data.data.content)
-        })
+        // axios.post('/watson/wym', {
+        //     user: this.props.user.id,
+        //     id: e.target.value
+        // }).then(result => {
+        //     this.setState({toView: result.data[0].content})
+        //     console.log(this.state.toView)
+        //     console.log(result.data.data.content)
+        // })
     }
 
     render(){
-        let wymsList = this.state.wyms.map((item, index) => (
-            <Row>
-                {/* <li className="inline" key={index}>{item.title}</li> */}
-                <Button className="inline fullWidth" key={index} onClick={(e) => this.onClick(e)} value={item._id}><i class="material-icons">add_circle</i>{item.title}</Button>
+        var groups = this.state.groups.map( (item, index) => (
+            <Row key={index} m={12} s={12}>
+                <Card className='blue-grey darken-1' textClassName='white-text' title={item.name} actions={[<a href='#'>Send Message</a>]}>
+                    Organizer: {item.organizer}<br/>
+                    Location: {item.location}<br/>
+                </Card>
             </Row>
-        )
-        );
+        ) );
+
         return(
             <div>
-                {wymsList}
-                <Inventory content={this.state.toView}/>
+                <br/>
+                <h3 className='container'>Your Groups</h3>
+                {groups}
+                
             </div>
         );
     }

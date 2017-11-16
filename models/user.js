@@ -61,18 +61,20 @@ userSchema.pre('save', function(next) {
 
 var User = mongoose.model('User', userSchema);
 
-//text schema for users to store their saved documents
-var textSchema = new mongoose.Schema({
-    userId: { type: Schema.Types.ObjectId, ref: 'User' },
-    title: String,
-    content: String
-});
+// THIS IS THE GROUPS MODEL LINKED TO THE USER MODEL
+var groupSchema = new mongoose.Schema({
+    userId: { type: Schema.Types.ObjectId, ref: 'User'},
+    name: String,
+    organizer: String,
+    location: String,
+    contacts: Array
+})
 
-var Text = mongoose.model('Text', textSchema);
+var Group = mongoose.model('Group', groupSchema)
 
 module.exports = {
     User: User,
-    
+    Group: Group
 };
 
 // module.exports = User;
