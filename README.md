@@ -24,7 +24,7 @@ Crowdsight's main focus was on event and group managment, with the advent of web
 | User        | Use  |        
 | ------------|:------------:|
 | Event Manager   | As an event manager, social media platforms are great for spreading information, but when it comes to communicating to people with actual plans to attend an event, it doesn't suffice to support real communication. CrowdSight would be an amazing asset to my work, as it would personally communicate with the attendees and their replies can give me a more accurate statement of the status of an event, or I can even give them information in the event where plans have changed. |
-| Program Manager | Managing groups of any size can be difficult, and having a standardized form of communication is always the most effective and straight-forward way or leading a group to attain goals. Organization can be especially difficult. Using CrowdSight, I can customize reminders to notify workers of deadlines or they can send back certain responses that can notify me of their progress, giving me real evidence backed results that I can use to better help my team 
+| Program Manager | Managing groups of any size can be difficult, and having a standardized form of communication is always the most effective and straight-forward way of leading a group to attain goals. Organization can be especially difficult. Using CrowdSight, I can customize reminders to notify workers of deadlines or they can send back certain responses that can notify me of their progress, giving me real evidence backed results that I can use to better help my team 
 
 
 
