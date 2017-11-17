@@ -51,8 +51,6 @@ router.post('/create', function(req, res, next) {
         	res.sendStatus(200)
         }
     });
- res.status(200)
-
 })
 
 router.post('/send', function(req, res, next) {
@@ -64,9 +62,8 @@ router.post('/send', function(req, res, next) {
 		var phoneNumber = phoneUtil.parse(req.body.numbers[i], 'US');
 		phoneNumber = phoneUtil.format(phoneNumber, PNF.INTERNATIONAL);
 		numbers.push(phoneNumber);
-
 	}
-	// NOW TO SEND THE NUMBERS
+	// NOW TO SEND THE MESSAGE TO THE NUMBERS
 	for (var i = 0; i < numbers.length; i++) {
 		var client = new twilio(accountSid, authToken);
 		client.messages.create({
@@ -78,6 +75,5 @@ router.post('/send', function(req, res, next) {
   	}
   	res.sendStatus(200)
 })
-
 
 module.exports = router;
