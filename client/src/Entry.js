@@ -169,7 +169,7 @@ class Entry extends Component {
     		group
     	})
     	.then( (response) => {
-    		alert(response)
+    		//console.log(response)
     	})
     }
 

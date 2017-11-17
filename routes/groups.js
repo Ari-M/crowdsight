@@ -7,7 +7,8 @@ const authToken = 'a47d38c302690f6613068ebe30823de3';
 var twilio = require('twilio');
 //INSTALLING GOOGLE PHONE NUMBER FORMAT
 var PNF = require('google-libphonenumber').PhoneNumberFormat;
-var { User, Group } = require('../models/user')
+var { User, Group } = require('../models/user');
+var async = require("async");
 
 router.get('/', function(req, res, next) {
 	Group.find({ userId: req.params.user }, function(err, groups) {
@@ -47,7 +48,7 @@ router.post('/create', function(req, res, next) {
         if (err) {
             res.send(err.message)
         } else {
-        	res.status(200)
+        	res.sendStatus(200)
         }
     });
  res.status(200)
@@ -55,20 +56,19 @@ router.post('/create', function(req, res, next) {
 })
 
 router.post('/send', function(req, res, next) {
-	console.log(req.body);
+	//console.log(req.body);
 	var numbers = [];
+	// PARSE THE NUMBERS
 	for (var i = 0; i < req.body.numbers.length; i++) {
 		var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 		var phoneNumber = phoneUtil.parse(req.body.numbers[i], 'US');
-		console.log(phoneUtil.format(phoneNumber, PNF.INTERNATIONAL));
-		numbers.push(phoneNumber[i]);
+		phoneNumber = phoneUtil.format(phoneNumber, PNF.INTERNATIONAL);
+		numbers.push(phoneNumber);
+
 	}
-	numbers.forEach(function (number) {
-		number = number.toString()
-	});
 	// NOW TO SEND THE NUMBERS
-	var client = new twilio(accountSid, authToken);
 	for (var i = 0; i < numbers.length; i++) {
+		var client = new twilio(accountSid, authToken);
 		client.messages.create({
 		    to: numbers[i],
 		    from: '+12064721649',
@@ -76,7 +76,7 @@ router.post('/send', function(req, res, next) {
 	  	})
 	  	.then((message) => console.log(message.sid));
   	}
-  	res.status(200)
+  	res.sendStatus(200)
 })
 
 

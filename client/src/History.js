@@ -57,15 +57,7 @@ class History extends Component {
     }
 
     render(){
-        var allContacts;
-        var contacts;
-        for(var i = 0; i < this.state.groups.length; i++) {
-            allContacts = this.state.groups[i].contacts.map( (contacts, index) => <p className={index}> {contacts.name} | {contacts.number}</p> )
-        }
-        
-
-
-
+     
         return(
             <div>
                 <br/>
