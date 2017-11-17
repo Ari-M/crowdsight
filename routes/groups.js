@@ -39,7 +39,7 @@ router.post('/create', function(req, res, next) {
 	// NOW HERE IS WHEN WE ACTUALLY CREATE A GROUP
 	Group.create({
         userId: req.body.user,
-		name: req.body.group.title,
+		name: req.body.group.name,
     	organizer: req.body.group.organizer,
     	location: req.body.group.location,
     	contacts: actualContacts
@@ -54,6 +54,30 @@ router.post('/create', function(req, res, next) {
 
 })
 
+router.post('/send', function(req, res, next) {
+	console.log(req.body);
+	var numbers = [];
+	for (var i = 0; i < req.body.numbers.length; i++) {
+		var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
+		var phoneNumber = phoneUtil.parse(req.body.numbers[i], 'US');
+		console.log(phoneUtil.format(phoneNumber, PNF.INTERNATIONAL));
+		numbers.push(phoneNumber[i]);
+	}
+	numbers.forEach(function (number) {
+		number = number.toString()
+	});
+	// NOW TO SEND THE NUMBERS
+	var client = new twilio(accountSid, authToken);
+	for (var i = 0; i < numbers.length; i++) {
+		client.messages.create({
+		    to: numbers[i],
+		    from: '+12064721649',
+		    body: req.body.message
+	  	})
+	  	.then((message) => console.log(message.sid));
+  	}
+  	res.status(200)
+})
 
 
 module.exports = router;

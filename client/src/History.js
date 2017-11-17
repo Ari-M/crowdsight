@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import Inventory from './Inventory';
 import axios from 'axios';
-import { Button, Card, Row, Col } from 'react-materialize';
+import { Button, Card, Input, Row, Col } from 'react-materialize';
 
 class History extends Component {
     constructor(props){
         super(props)
         this.state = {
             user: this.props.user.id,
-            groups: []
+            groups: [],
+            message: ''
         }
         this.componentDidMount = this.componentDidMount.bind(this)
     }
@@ -26,35 +27,66 @@ class History extends Component {
             console.log(this.state.groups)
         })
     }
-    //Get Individual wym props
+
+    onChange(e) {
+        var text = e.target.value
+        this.setState({
+            message: text
+        })
+    }
+
+    // SEND MESSAGE TO GROUP 
     onClick(e){
-        // axios.post('/watson/wym', {
-        //     user: this.props.user.id,
-        //     id: e.target.value
-        // }).then(result => {
-        //     this.setState({toView: result.data[0].content})
-        //     console.log(this.state.toView)
-        //     console.log(result.data.data.content)
-        // })
+        e.preventDefault();
+        var groupId = e.target.id;
+        var group = this.state.groups[groupId];
+        var numbers = [];
+        for(var i = 0; i < group.contacts.length; i++) {
+            numbers.push(group.contacts[i].number)
+        }
+        console.log(numbers);
+        console.log(this.state.message);
+        axios.post('/groups/send', {
+            numbers: numbers,
+            message: this.state.message
+        }).then(result => {
+            console.log('Sent!')
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     render(){
-        var groups = this.state.groups.map( (item, index) => (
-            <Row key={index} m={12} s={12}>
-                <Card className='blue-grey darken-1' textClassName='white-text' title={item.name} actions={[<a href='#'>Send Message</a>]}>
-                    Organizer: {item.organizer}<br/>
-                    Location: {item.location}<br/>
-                </Card>
-            </Row>
-        ) );
+        var allContacts;
+        var contacts;
+        for(var i = 0; i < this.state.groups.length; i++) {
+            allContacts = this.state.groups[i].contacts.map( (contacts, index) => <p className={index}> {contacts.name} | {contacts.number}</p> )
+        }
+        
+
+
 
         return(
             <div>
                 <br/>
                 <h3 className='container'>Your Groups</h3>
-                {groups}
-                
+                {this.state.groups.map( (group, index) => (
+                    <div className='card container right'>
+                        <h4>{group.name}</h4> <hr/>
+                        <h5>Organizer: {group.organizer}</h5> <br/>
+                        <h5>Location: {group.location}</h5> <br/>
+                        <h5>Contacts:</h5>
+                        <ul>
+                            {group.contacts.map( (contact, index) => (<li> {contact.name} | {contact.number} </li>))}
+                        </ul>
+                        <form>
+                            <Input s={9} label="Message Group" onChange={ (e) => this.onChange(e)} />
+                            <Button id={index} className="left button" onClick={ (e) => this.onClick(e) }>Send</Button>
+                        </form>
+                    </div>
+                ))}
             </div>
+            
         );
     }
 }

@@ -77,4 +77,3 @@ module.exports = {
     Group: Group
 };
 
-// module.exports = User;
