@@ -10,12 +10,12 @@ CrowdSight is a simple text message managment web application where you can crea
 Crowdsight's main focus was on event and group managment, with the advent of web technology and more accessible communication online, text messaging has remained one of the most popular forms of communication. Companies in industry's like tech and banking utilize this form of communication for introducing two factor authentication, or for notifying people of their nearby driver. This same communication system would integrate wonderfully into mass event/group managment. 
 
 #### Intended Features
-1.	The ability to create an event with a custom url to where people can apply to that event online or be included in a private group
-2.	The form must include at least the person's name and phone number
-3.	Upon completion, the user receives a text explaining that they have sucessfully subscribed for event/group notfiications
-4.	The manager can from then on program SMS to send out reminders or any other information aabout an event or group on a particular time and date
-5.	There are custom reponses that can be used in response to a group type. For instance, if a member subscribed to the system wanted to leave, 	they could simply reply 'leave' and they would no longer receive messages
-6.	Only managers would need accounts, with the members not necessarily even needing interaction with the site, unless they were applying for a 	public event
+*	The ability to create an event with a custom url to where people can apply to that event online or be included in a private group
+*	The form must include at least the person's name and phone number
+*	Upon completion, the user receives a text explaining that they have sucessfully subscribed for event/group notfiications
+*	The manager can from then on program SMS to send out reminders or any other information aabout an event or group on a particular time and date
+*	There are custom reponses that can be used in response to a group type. For instance, if a member subscribed to the system wanted to leave, 	they could simply reply 'leave' and they would no longer receive messages
+*	Only managers would need accounts, with the members not necessarily even needing interaction with the site, unless they were applying for a 	public event
 
 
 
@@ -33,7 +33,7 @@ Crowdsight's main focus was on event and group managment, with the advent of web
 
 ### Technologies Used
 
-* MERN STACK *
+#### MERN STACK 
 
 | Tech        | Application  |        
 | ------------|:------------:|
